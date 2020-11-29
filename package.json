@@ -1,0 +1,19 @@
+{
+  "name": "openfisca-france",
+  "version": "1.0.0",
+  "description": "Traduction de OpenFisca France en JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mycaule/openfisca-france-js.git"
+  },
+  "author": "Michel Hua",
+  "license": "AGPL",
+  "bugs": {
+    "url": "https://github.com/mycaule/openfisca-france-js/issues"
+  },
+  "homepage": "https://github.com/mycaule/openfisca-france-js#readme"
+}

@@ -1,1 +1,3 @@
-Transpiler le code Python de https://github.com/openfisca/openfisca-france en JavaScript.
+### OpenFisca France JS
+
+Traduction du code [OpenFisca France](https://github.com/openfisca/openfisca-france) de Python vers JavaScript.

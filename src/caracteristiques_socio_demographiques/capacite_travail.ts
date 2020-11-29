@@ -1,6 +1,3 @@
-// from openfisca_france.model.base import *
-
-
 // class taux_capacite_travail(Variable):
 //     value_type = float
 //     default_value = 1.0

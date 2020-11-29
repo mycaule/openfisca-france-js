@@ -1,5 +1,3 @@
-// from openfisca_france.model.base import *
-
 // EEE_COUNTRY_CODES = [
 //     b'AT',
 //     b'BE',

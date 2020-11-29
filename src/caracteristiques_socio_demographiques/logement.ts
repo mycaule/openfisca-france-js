@@ -1,9 +1,3 @@
-// from numpy.core.defchararray import startswith
-
-
-// from openfisca_france.model.base import *
-
-
 // class coloc(Variable):
 //     value_type = bool
 //     entity = Menage

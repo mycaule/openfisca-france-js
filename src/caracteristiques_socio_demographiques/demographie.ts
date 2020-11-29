@@ -1,110 +1,83 @@
-// EEE_COUNTRY_CODES = [
-//     b'AT',
-//     b'BE',
-//     b'BG',
-//     b'CY',
-//     b'CZ',
-//     b'DE',
-//     b'DK',
-//     b'EE',
-//     b'ES',
-//     b'FI',
-//     b'FR',
-//     b'GR',
-//     b'HR',
-//     b'HU',
-//     b'IE',
-//     b'IS',
-//     b'IT',
-//     b'LI',
-//     b'LU',
-//     b'LV',
-//     b'MT',
-//     b'NL',
-//     b'NO',
-//     b'PL',
-//     b'PT',
-//     b'RO',
-//     b'SE',
-//     b'SI',
-//     b'SK',
-//     b'UK',
-//     b'CH',  # Suisse hors EEE
-//     ]
+import { Variable, Individu } from '../base'
 
+const EEE_COUNTRY_CODES = [
+    'AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+    'IE', 'IS', 'IT', 'LI', 'LU', 'LV', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'SE', 'SI',
+    'SK', 'UK', 'CH'] // Suisse hors EEE
 
-// class date_naissance(Variable):
-//     value_type = date
-//     default_value = date(1970, 1, 1)
-//     entity = Individu
-//     label = "Date de naissance"
-//     definition_period = ETERNITY
+interface date_naissance extends Variable {
+    value_type: string    // date
+    default_value: string // date(1970, 1, 1)
+    entity: Individu
+    label: string
+    definition_period: string // ETERNITY
+}
 
+interface adoption extends Variable {
+    value_type: boolean
+    entity: Individu
+    label: string  // Enfant adopté
+    definition_period: string // MONTH
+}
 
-// class adoption(Variable):
-//     value_type = bool
-//     entity = Individu
-//     label = "Enfant adopté"
-//     definition_period = MONTH
+interface garde_alternee extends Variable {
+    value_type: boolean
+    entity: Individu
+    label: string // 'Enfant en garde alternée'
+    definition_period: string // MONTH
+    set_input: object // set_input_dispatch_by_period
+}
 
+interface activite extends Variable {
+    //     value_type = Enum
+    //     default_value = TypesActivite.inactif
+    //     possible_values = TypesActivite  # defined in model/base.py
+    //     entity = Individu
+    //     label = "Activité"
+    //     definition_period = MONTH
+    //     set_input = set_input_dispatch_by_period
+}
 
-// class garde_alternee(Variable):
-//     value_type = bool
-//     entity = Individu
-//     label = 'Enfant en garde alternée'
-//     definition_period = MONTH
-//     set_input = set_input_dispatch_by_period
+interface enceinte extends Variable {
+    //     value_type = bool
+    //     entity = Individu
+    //     label = "Est enceinte"
+    //     definition_period = MONTH
+}
 
+interface statut_marital extends Variable {
+    //     value_type = Enum
+    //     possible_values = TypesStatutMarital  # defined in model/base.py
+    //     default_value = TypesStatutMarital.celibataire
+    //     entity = Individu
+    //     label = "Statut marital"
+    //     definition_period = MONTH
+    //     set_input = set_input_dispatch_by_period
 
-// class activite(Variable):
-//     value_type = Enum
-//     default_value = TypesActivite.inactif
-//     possible_values = TypesActivite  # defined in model/base.py
-//     entity = Individu
-//     label = "Activité"
-//     definition_period = MONTH
-//     set_input = set_input_dispatch_by_period
+    //     def formula(individu, period, parameters):
+    //         # Par défault, on considère que deux adultes dans un foyer fiscal sont PACSÉS
+    //         deux_adultes = individu.foyer_fiscal.nb_persons(FoyerFiscal.DECLARANT) >= 2
+    //         return where(deux_adultes, TypesStatutMarital.pacse, TypesStatutMarital.celibataire)
+}
 
+interface nbN extends Variable {
+    //     cerfa_field = "N"
+    //     value_type = int
+    //     is_period_size_independent = True
+    //     entity = FoyerFiscal
+    //     label = "Nombre d'enfants mariés/pacsés et d'enfants non mariés chargés de famille"
+    //     definition_period = YEAR
+}
 
-// class enceinte(Variable):
-//     value_type = bool
-//     entity = Individu
-//     label = "Est enceinte"
-//     definition_period = MONTH
+interface nbR extends Variable {
+    //     cerfa_field = "R"
+    //     value_type = int
+    //     is_period_size_independent = True
+    //     entity = FoyerFiscal
+    //     label = "Nombre de titulaires (autres que les enfants) de la carte invalidité d'au moins 80 %"
+    //     definition_period = YEAR
 
-
-// class statut_marital(Variable):
-//     value_type = Enum
-//     possible_values = TypesStatutMarital  # defined in model/base.py
-//     default_value = TypesStatutMarital.celibataire
-//     entity = Individu
-//     label = "Statut marital"
-//     definition_period = MONTH
-//     set_input = set_input_dispatch_by_period
-
-//     def formula(individu, period, parameters):
-//         # Par défault, on considère que deux adultes dans un foyer fiscal sont PACSÉS
-//         deux_adultes = individu.foyer_fiscal.nb_persons(FoyerFiscal.DECLARANT) >= 2
-//         return where(deux_adultes, TypesStatutMarital.pacse, TypesStatutMarital.celibataire)
-
-
-// class nbN(Variable):
-//     cerfa_field = "N"
-//     value_type = int
-//     is_period_size_independent = True
-//     entity = FoyerFiscal
-//     label = "Nombre d'enfants mariés/pacsés et d'enfants non mariés chargés de famille"
-//     definition_period = YEAR
-
-
-// class nbR(Variable):
-//     cerfa_field = "R"
-//     value_type = int
-//     is_period_size_independent = True
-//     entity = FoyerFiscal
-//     label = "Nombre de titulaires (autres que les enfants) de la carte invalidité d'au moins 80 %"
-//     definition_period = YEAR
-
+}
 
 // class caseE(Variable):
 //     cerfa_field = "E"
@@ -324,9 +297,9 @@
 //     label = "Durée depuis laquelle l'individu possède un titre de séjour (en années)"
 //     definition_period = MONTH
 
-
-// class enfant_place(Variable):
-//     value_type = bool
-//     entity = Individu
-//     label = "Enfant placé en structure spécialisée ou famille d'accueil"
-//     definition_period = MONTH
+interface enfant_place extends Variable {
+    value_type: boolean
+    entity: Individu
+    label: string   // Enfant placé en structure spécialisée ou famille d'accueil
+    definition_period: string // MONTH
+}
